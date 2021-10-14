@@ -9,9 +9,54 @@ import UIKit
 
 class SearchVC: UIViewController {
 
+    let logoImageView = UIImageView()
+    let usernameTextField = GFTextField()
+    let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemPink
+        self.view.backgroundColor = .systemBackground
+        configureLogoImageView()
+        configureUserNameTextField()
+        configureCallToActionButton()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
+    private func configureLogoImageView() {
+        self.view.addSubview(logoImageView)
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.image = UIImage(named: "gh-logo")!
+
+        //Totalde active demek oluyor.Tek tek constraintler .iaActive = true yazmaya gerek yok.
+        NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            logoImageView.heightAnchor.constraint(equalToConstant: 200),
+            logoImageView.widthAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+
+    private func configureUserNameTextField() {
+        self.view.addSubview(usernameTextField)
+        NSLayoutConstraint.activate([
+            usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
+            usernameTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50),
+            usernameTextField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50),
+            usernameTextField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+
+    private func configureCallToActionButton() {
+        self.view.addSubview(callToActionButton)
+        NSLayoutConstraint.activate([
+            callToActionButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            callToActionButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50),
+            callToActionButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50),
+            callToActionButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
 }
