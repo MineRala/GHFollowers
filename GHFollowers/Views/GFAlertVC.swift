@@ -33,6 +33,10 @@ class GFAlertVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        allConfigure()
+    }
+
+    private func allConfigure() {
         configureContainerView()
         configureTitleLabel()
         configureActionButton()
@@ -78,10 +82,6 @@ class GFAlertVC: UIViewController {
         ])
     }
 
-    @objc func dismissVC() {
-        dismiss(animated: true)
-    }
-
     private func configureMessageLabel() {
         containerView.addSubview(messageLabel)
         messageLabel.text = message ?? "Unable to complete request!"
@@ -94,4 +94,9 @@ class GFAlertVC: UIViewController {
         ])
 
     }
+
+    @objc func dismissVC() {
+        dismiss(animated: true)
+    }
+
 }

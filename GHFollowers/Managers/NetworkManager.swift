@@ -9,14 +9,16 @@ import Foundation
 
 class NetworkManager {
     //Use Singelton Pattern
+    // static shared çünkü heryerden sharede ulaşmak istedim.
     static let shared = NetworkManager()
     let baseURL = "https://api.github.com/users/"
 
     private init() {}
-    //Generic oluşturduk.
+    //Generic oluşturduk. Ya Follower arrayi dönecek yada GFError dönecek. GFError custom errror.
     func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
-        guard  let url = URL(string: endpoint) else {
+        // Url kontrol edildi.
+        guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidUsername))
             return
         }

@@ -17,16 +17,20 @@ class SearchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
-        configureLogoImageView()
-        configureUserNameTextField()
-        configureCallToActionButton()
-        createDissmisKeyboardTapGesture()
+        configureViewController()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    private func configureViewController() {
+        self.view.backgroundColor = .systemBackground
+        configureLogoImageView()
+        configureUserNameTextField()
+        configureCallToActionButton()
+        createDissmisKeyboardTapGesture()
     }
 
     private func configureLogoImageView() {
@@ -83,7 +87,7 @@ class SearchVC: UIViewController {
     }
 }
 
-
+//MARK: - UITextField Delegate
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
