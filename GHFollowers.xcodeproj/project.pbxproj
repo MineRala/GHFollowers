@@ -25,6 +25,7 @@
 		E8520E202718D1EE00AB1486 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8520E1F2718D1EE00AB1486 /* GFTextField.swift */; };
 		E8B4FFA7271B1E9600D6D97A /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B4FFA6271B1E9600D6D97A /* FollowerCell.swift */; };
 		E8B4FFAB271B1F2B00D6D97A /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B4FFAA271B1F2B00D6D97A /* GFAvatarImageView.swift */; };
+		E8B4FFAF271B514A00D6D97A /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B4FFAE271B514A00D6D97A /* UIHelper.swift */; };
 		E8E515BA271A2F3200E1BA58 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E515B9271A2F3200E1BA58 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		E8520E1F2718D1EE00AB1486 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		E8B4FFA6271B1E9600D6D97A /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		E8B4FFAA271B1F2B00D6D97A /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		E8B4FFAE271B514A00D6D97A /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		E8E515B9271A2F3200E1BA58 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				E835D843271AFBAE00B1CFBE /* ErrorMessage.swift */,
+				E8B4FFAE271B514A00D6D97A /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				E8520E1C2718CEF000AB1486 /* GFButton.swift in Sources */,
 				E8520E182718A86B00AB1486 /* FavoritesListVC.swift in Sources */,
 				E847CD96271875E500CD9ED1 /* AppDelegate.swift in Sources */,
+				E8B4FFAF271B514A00D6D97A /* UIHelper.swift in Sources */,
 				E8B4FFAB271B1F2B00D6D97A /* GFAvatarImageView.swift in Sources */,
 				E83DBBDB271A2A650090BEEC /* User.swift in Sources */,
 				E826B89E2719EDD9003D3544 /* GFAlertVC.swift in Sources */,
