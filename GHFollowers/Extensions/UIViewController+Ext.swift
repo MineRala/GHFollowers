@@ -39,4 +39,18 @@ extension UIViewController {
         ])
         activityIndicator.startAnimating()
     }
+
+    func dismissLoadingView() {
+        //UI ile ilgili olduğu için main treadde yapılması lazım.
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview()
+            containerView = nil
+        }
+    }
+
+    func showEmptyStateView(with message: String, in view: UIView) {
+        let emptyStateView = GFEmptyStateView(message: message)
+        emptyStateView.frame = view.bounds
+        view.addSubview(emptyStateView)
+    }
 }

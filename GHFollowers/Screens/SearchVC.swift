@@ -50,6 +50,7 @@ class SearchVC: UIViewController {
     private func configureUserNameTextField() {
         self.view.addSubview(usernameTextField)
         usernameTextField.delegate = self
+        usernameTextField.autocapitalizationType = .none
         NSLayoutConstraint.activate([
             usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
             usernameTextField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50),
@@ -71,7 +72,7 @@ class SearchVC: UIViewController {
 
     @objc func pushFollowerListVC() {
         guard  isUsernameEntered else {
-            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to konw who to look for 🙂.", buttonTitle: "OK" )
+            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 🙂.", buttonTitle: "OK" )
             return
         }
         let followerListVC = FollowerListVC()
