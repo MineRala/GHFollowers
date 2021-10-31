@@ -56,4 +56,45 @@ class NetworkManager {
         // Network call başlıyor.
         task.resume()
     }
+
+
+    func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
+        let endpoint = baseURL + "\(username)"
+        // Url kontrol edildi.
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidUsername))
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            // error kontrol edildi.
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            // response kontrol edildi.
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            // data kontrol edildi.
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+
+            do {
+                // Decode yaptık çünkü datayı serverdan çekip objeye dönüştürdük.
+                let decoder = JSONDecoder()
+                // snakeCase yaptık tekrar structtaki attribute isimlerini değiştirmeme gerek kalmadı.
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let user = try decoder.decode(User.self, from: data)
+                completed(.success(user))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
+        // Network call başlıyor.
+        task.resume()
+    }
 }
