@@ -8,7 +8,7 @@
 import UIKit
 
 enum ItemInfoType {
-    case repos, gists, folloewers, following
+    case repos, gists, followers, following
 }
 
 class GFItemInfoView: UIView {
@@ -61,7 +61,7 @@ class GFItemInfoView: UIView {
         case .gists:
             symbolImageView.image = UIImage(systemName: SFSymbols.gists)
             titleLabel.text = "Public Gists"
-        case .folloewers:
+        case .followers:
             symbolImageView.image = UIImage(systemName: SFSymbols.followers)
             titleLabel.text = "Followers"
         case .following:
