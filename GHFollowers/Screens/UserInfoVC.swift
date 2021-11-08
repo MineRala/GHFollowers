@@ -15,6 +15,7 @@ class UserInfoVC: UIViewController {
     var username: String!
     let padding: CGFloat = 20
     let itemHeight: CGFloat = 140
+    let dataLabel  = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
 
     override func viewDidLoad() {
@@ -39,6 +40,7 @@ class UserInfoVC: UIViewController {
                     self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
                     self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
                     self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
+                    self.dataLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
@@ -47,7 +49,7 @@ class UserInfoVC: UIViewController {
     }
 
     private func layoutUI() {
-        itemViews = [headerView,itemViewOne,itemViewTwo]
+        itemViews = [headerView,itemViewOne,itemViewTwo,dataLabel]
         for itemView in itemViews {
             self.view.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,6 +69,9 @@ class UserInfoVC: UIViewController {
 
             itemViewTwo.topAnchor.constraint(equalTo: self.itemViewOne.bottomAnchor, constant: padding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
+
+            dataLabel.topAnchor.constraint(equalTo: self.itemViewTwo.bottomAnchor, constant: padding),
+            dataLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
 
