@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import SafariServices
+
+protocol  UserInfoVCDelegate: class {
+    func didTapGithubProfile()
+    func didTapGetFollwers()
+}
 
 class UserInfoVC: UIViewController {
 
@@ -37,15 +43,25 @@ class UserInfoVC: UIViewController {
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
-                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
-                    self.dataLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
+                    self.configureUIElements(with: user)
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
         }
+    }
+
+    func configureUIElements(with user: User) {
+        let repoItemVC = GFRepoItemVC(user: user)
+        repoItemVC.delegate = self
+
+        let followerItemVC = GFFollowerItemVC(user: user)
+        followerItemVC.delegate = self
+
+        self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+        self.add(childVC: repoItemVC, to: self.itemViewOne)
+        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        self.dataLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
     }
 
     private func layoutUI() {
@@ -85,4 +101,16 @@ class UserInfoVC: UIViewController {
     @objc func dismissVC() {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension UserInfoVC: UserInfoVCDelegate {
+    func didTapGithubProfile() {
+        print("My button was tapped!!")
+    }
+
+    func didTapGetFollwers() {
+        
+    }
+
+    
 }
