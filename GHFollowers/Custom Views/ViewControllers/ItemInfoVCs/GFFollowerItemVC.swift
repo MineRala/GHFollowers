@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+// Sub Class
 class GFFollowerItemVC: GFItemInfoVC {
 
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class GFFollowerItemVC: GFItemInfoVC {
     }
 
     override func actionButtonTapped() {
-        delegate.didTapGetFollwers()
+        delegate.didTapGetFollwers(for: user)
     }
 }
 

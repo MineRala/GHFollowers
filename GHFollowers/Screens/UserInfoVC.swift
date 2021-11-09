@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import SafariServices
 
 protocol  UserInfoVCDelegate: class {
-    func didTapGithubProfile()
-    func didTapGetFollwers()
+    func didTapGithubProfile(for user: User)
+    func didTapGetFollwers(for user: User)
 }
 
 class UserInfoVC: UIViewController {
@@ -23,6 +22,8 @@ class UserInfoVC: UIViewController {
     let itemHeight: CGFloat = 140
     let dataLabel  = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
+    //weak delegate because avoid retain cycle
+    weak var delegate: FollowerListDelegate!
 
     override func viewDidLoad() {
         configureViewController()
@@ -104,13 +105,20 @@ class UserInfoVC: UIViewController {
 }
 
 extension UserInfoVC: UserInfoVCDelegate {
-    func didTapGithubProfile() {
-        print("My button was tapped!!")
+    func didTapGithubProfile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMainThread(title: "Invalid URl", message: "The url atteched to this user is invalid.", buttonTitle: "OK")
+            return
+        }
+        presentSafariVC(with: url)
     }
 
-    func didTapGetFollwers() {
-        
+    func didTapGetFollwers(for user: User) {
+        guard user.followers != 0 else {
+            presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers.What a shame 😔.", buttonTitle: "So sad")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+        dismissVC()
     }
-
-    
 }

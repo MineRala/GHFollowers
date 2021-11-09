@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Sub Class
 class GFRepoItemVC: GFItemInfoVC {
 
     override func viewDidLoad() {
@@ -21,7 +22,7 @@ class GFRepoItemVC: GFItemInfoVC {
     }
 
     override func actionButtonTapped() {
-        delegate.didTapGithubProfile()
+        delegate.didTapGithubProfile(for: user)
     }
 }
 

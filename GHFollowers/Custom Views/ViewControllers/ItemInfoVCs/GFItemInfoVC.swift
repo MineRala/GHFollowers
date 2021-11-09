@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Super Class
 class GFItemInfoVC: UIViewController {
 
     let stackView = UIStackView()
@@ -14,7 +15,8 @@ class GFItemInfoVC: UIViewController {
     let itemInfoViewTwo = GFItemInfoView()
     let actionButton = GFButton()
     var user: User!
-    var delegate: UserInfoVCDelegate!
+    // weak delegate because avoid retain cycle 
+    weak var delegate: UserInfoVCDelegate!
     
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
@@ -70,6 +72,6 @@ class GFItemInfoVC: UIViewController {
     }
 
     @objc func actionButtonTapped() {
-
+        
     }
 }

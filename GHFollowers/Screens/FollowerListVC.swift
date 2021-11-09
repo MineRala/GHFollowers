@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FollowerListDelegate: class {
+    func didRequestFollowers(for username: String)
+}
+
 // Tek section varsa main yazılır. Sadece phone da çalışacak.
 enum Section {
     case main
@@ -116,6 +120,8 @@ extension FollowerListVC: UICollectionViewDelegate {
         let activeArray = isSearching ? filteredFollowers : followers
         let follower = activeArray[indexPath.item]
         let destVC = UserInfoVC()
+        // FollowerListVC is listening to UserInfoVC. FollowerListVC UserInfoVc' yi dinliyor.
+        destVC.delegate = self
         destVC.username = follower.login
         let navController = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
@@ -140,3 +146,15 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     }
 }
 
+extension FollowerListVC: FollowerListDelegate {
+    // FollowerListVC UserInfoVC' yi dinledi yapması gerekenleri yapıyor.
+    func didRequestFollowers(for username: String) {
+        self.username = username
+        self.title = username
+        self.page = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(username: username, page: page)
+    }
+}
