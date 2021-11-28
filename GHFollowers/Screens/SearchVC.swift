@@ -38,7 +38,7 @@ class SearchVC: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = UIImage(named: "gh-logo")!
 
-        //Totalde active demek oluyor.Tek tek constraintler .iaActive = true yazmaya gerek yok.
+        //Totalde active demek oluyor.Tek tek constraintler .isActive = true yazmaya gerek yok.
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 80),
             logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),

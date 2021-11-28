@@ -23,7 +23,7 @@ class UserInfoVC: UIViewController {
     let dataLabel  = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
     //weak delegate because avoid retain cycle
-    weak var delegate: FollowerListDelegate!
+    weak var delegate: FollowerListVCDelegate!
 
     override func viewDidLoad() {
         configureViewController()

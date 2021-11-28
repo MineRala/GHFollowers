@@ -37,7 +37,9 @@ class GFAvatarImageView: UIImageView {
         }
         //URL kontrol edildi.
         guard let url = URL(string: urlString) else { return }
+        // [weak self] -> Memoryi azaltmak için.Weak yaparak referance countingi azalttık.
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            //self'i unwrapping yaptık.
             guard let self = self else { return }
             // error kontrol edildi.
             if error != nil { return }
