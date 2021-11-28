@@ -40,6 +40,7 @@
 		E8DB22662752462E00B640B2 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB22652752462E00B640B2 /* PersistenceManager.swift */; };
 		E8E515BA271A2F3200E1BA58 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E515B9271A2F3200E1BA58 /* NetworkManager.swift */; };
 		E8FFE4002753CA9E0091747D /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FFE3FF2753CA9E0091747D /* FavoriteCell.swift */; };
+		E8FFE4042753D73A0091747D /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FFE4032753D73A0091747D /* GFTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		E8DB22652752462E00B640B2 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		E8E515B9271A2F3200E1BA58 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E8FFE3FF2753CA9E0091747D /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		E8FFE4032753D73A0091747D /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		E83DBBD7271A2A2D0090BEEC /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8FFE4022753D70B0091747D /* TabBarControllers */,
 				E8B4FFA4271B1BC700D6D97A /* Cells */,
 				E8435A67272D683700AD6B20 /* ViewControllers */,
 				E8435A66272D682E00AD6B20 /* Labels */,
@@ -268,6 +271,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		E8FFE4022753D70B0091747D /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8FFE4032753D73A0091747D /* GFTabBarController.swift */,
+			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,6 +364,7 @@
 				E8B3160B272F0E8D00EAA79F /* GFItemInfoView.swift in Sources */,
 				E8FFE4002753CA9E0091747D /* FavoriteCell.swift in Sources */,
 				E8B4FFA7271B1E9600D6D97A /* FollowerCell.swift in Sources */,
+				E8FFE4042753D73A0091747D /* GFTabBarController.swift in Sources */,
 				E8DB22662752462E00B640B2 /* PersistenceManager.swift in Sources */,
 				E83DBBD3271A29B30090BEEC /* Follower.swift in Sources */,
 				E82AB21927368B93008A27F0 /* GFRepoItemVC.swift in Sources */,
